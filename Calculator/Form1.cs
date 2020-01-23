@@ -90,7 +90,9 @@ namespace Calculator
 
         private void EqualsButton_Click(object sender, EventArgs e)
         {
+            // Calculate the equation
             CalculateEquation();
+
             //Focus on the user input
             FocusInputText();
         }
@@ -182,61 +184,7 @@ namespace Calculator
 
         #endregion
 
-        #region Private Helpers
-        /// <summary>
-        /// Focuses the user Input After the click of a button
-        /// </summary>
-        private void FocusInputText()
-        {
-            this.UserInputText.Focus();
-        }
 
-        /// <summary>
-        /// inserts the number inputed
-        /// </summary>
-        /// <param name="number">number inputed</param>
-        /// <summary>
-        /// Inserts the given text into the user input text box
-        /// </summary>
-        /// <param name="value">The value to insert</param>
-        private void InsertTextValue(string value)
-        {
-            // Remember selection start
-            var selectionStart = this.UserInputText.SelectionStart;
-
-            // Set new text
-            this.UserInputText.Text = this.UserInputText.Text.Insert(this.UserInputText.SelectionStart, value);
-
-            // Restore the selection start
-            this.UserInputText.SelectionStart = selectionStart + value.Length;
-
-            // Set selection length to zero
-            this.UserInputText.SelectionLength = 0;
-        }
-
-        /// <summary>
-        /// Deletes the character to the right of the selection start of the user input text box
-        /// </summary>
-        private void DeleteTextValue()
-        {
-            // If we don't have a value to delete, return
-            if (this.UserInputText.Text.Length < this.UserInputText.SelectionStart + 1)
-                return;
-
-            // Remember selection start
-            var selectionStart = this.UserInputText.SelectionStart;
-
-            // Delete the character to the right of the selection
-            this.UserInputText.Text = this.UserInputText.Text.Remove(this.UserInputText.SelectionStart, 1);
-
-            // Restore the selection start
-            this.UserInputText.SelectionStart = selectionStart;
-
-            // Set selection length to zero
-            this.UserInputText.SelectionLength = 0;
-        }
-
-        #endregion
 
         /// <summary>
         /// Calculates the given equation and outputs the answer to the user label
@@ -430,6 +378,62 @@ namespace Calculator
 
             return currentNumber + newCharacter;
         }
+
+        #region Private Helpers
+        /// <summary>
+        /// Focuses the user Input After the click of a button
+        /// </summary>
+        private void FocusInputText()
+        {
+            this.UserInputText.Focus();
+        }
+
+        /// <summary>
+        /// inserts the number inputed
+        /// </summary>
+        /// <param name="number">number inputed</param>
+        /// <summary>
+        /// Inserts the given text into the user input text box
+        /// </summary>
+        /// <param name="value">The value to insert</param>
+        private void InsertTextValue(string value)
+        {
+            // Remember selection start
+            var selectionStart = this.UserInputText.SelectionStart;
+
+            // Set new text
+            this.UserInputText.Text = this.UserInputText.Text.Insert(this.UserInputText.SelectionStart, value);
+
+            // Restore the selection start
+            this.UserInputText.SelectionStart = selectionStart + value.Length;
+
+            // Set selection length to zero
+            this.UserInputText.SelectionLength = 0;
+        }
+
+        /// <summary>
+        /// Deletes the character to the right of the selection start of the user input text box
+        /// </summary>
+        private void DeleteTextValue()
+        {
+            // If we don't have a value to delete, return
+            if (this.UserInputText.Text.Length < this.UserInputText.SelectionStart + 1)
+                return;
+
+            // Remember selection start
+            var selectionStart = this.UserInputText.SelectionStart;
+
+            // Delete the character to the right of the selection
+            this.UserInputText.Text = this.UserInputText.Text.Remove(this.UserInputText.SelectionStart, 1);
+
+            // Restore the selection start
+            this.UserInputText.SelectionStart = selectionStart;
+
+            // Set selection length to zero
+            this.UserInputText.SelectionLength = 0;
+        }
+
+        #endregion
 
 
 

@@ -9,8 +9,8 @@ namespace Calculator
     public enum OperationType
     {
         Add,
-        Multiply,
+        Minus,
         Divide,
-        Subtract
+        Multiply
     }
 }
